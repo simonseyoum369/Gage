@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Gage University College | Summer Class 2026 – Premium Training</title>
+  <!-- Google Fonts & Font Awesome 6 (free CDN) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1e2a32;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary-green: #1a4d2c;    /* deep forest green (logo top) */
+      --primary-blue: #0a2f5a;     /* royal blue/navy (logo bottom) */
+      --accent-orange: #e67e22;
+      --accent-gold: #f3b33d;
+      --light-bg: #f8fafc;
+      --gray-soft: #eef2f5;
+      --shadow-sm: 0 10px 30px -12px rgba(0,0,0,0.08);
+      --shadow-md: 0 20px 35px -15px rgba(0,0,0,0.1);
+    }
+
+    /* Logo styling (shield + checkmark) */
+    .logo-shield {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .shield-icon {
+      position: relative;
+      width: 48px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green) 50%, var(--primary-blue) 50%, var(--primary-blue) 100%);
+      clip-path: polygon(50% 0%, 100% 15%, 100% 70%, 50% 100%, 0% 70%, 0% 15%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .shield-icon i {
+      font-size: 28px;
+      color: white;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+    }
+    .logo-text h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--primary-blue);
+    }
+    .logo-text p {
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+      color: var(--primary-green);
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.8rem 5%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e2a32;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: var(--accent-orange); }
+    .btn-register-nav {
+      background: var(--accent-orange);
+      color: white !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 40px;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .btn-register-nav:hover { background: #d35400; color: white !important; }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--accent-orange);
+      border: none;
+      padding: 0.9rem 2rem;
+      font-weight: 700;
+      border-radius: 40px;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1rem;
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
+    }
+    .btn-primary:hover { background: #c0392b; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary-blue);
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: var(--primary-blue);
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn-outline:hover { background: var(--primary-blue); color: white; }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(105deg, #ffffff 0%, #f4f9ff 100%);
+      padding: 3rem 5% 4rem;
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+    .hero-content { flex: 1.2; }
+    .hero-badge {
+      background: var(--primary-green);
+      color: white;
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .hero-content h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero-content h1 span {
+      color: var(--primary-green);
+      border-bottom: 3px solid var(--accent-gold);
+    }
+    .amharic-head {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin: 0.5rem 0;
+    }
+    .flex-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .schedule-pill {
+      background: white;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      font-size: 0.9rem;
+      border-left: 4px solid var(--accent-orange);
+    }
+    .cta-group { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+    /* sections */
+    .section {
+      padding: 4rem 5%;
+    }
+    .section-alt {
+      background: var(--light-bg);
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: var(--accent-orange);
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      border-radius: 2px;
+    }
+
+    /* tabs & courses */
+    .tabs-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 2rem;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 40px 40px 0 0;
+      transition: 0.2s;
+      color: #4a5568;
+    }
+    .tab-btn.active {
+      background: var(--primary-blue);
+      color: white;
+    }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .course-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: 0.2s;
+      border: 1px solid #eef2f5;
+    }
+    .course-card i { font-size: 2rem; color: var(--primary-green); margin-bottom: 0.5rem; }
+    .course-card h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .course-card p { color: #4b5563; font-size: 0.85rem; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.5rem; }
+    .badge-soft { background: #eef2ff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
+
+    /* schedule grid */
+    .flex-schedule {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .schedule-card {
+      background: white;
+      flex: 1;
+      min-width: 180px;
+      padding: 1.5rem;
+      text-align: center;
+      border-radius: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .schedule-card i { font-size: 2.2rem; color: var(--primary-blue); margin-bottom: 0.8rem; }
+
+    /* locations */
+    .locations-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .location-card {
+      background: white;
+      flex: 1;
+      padding: 1.5rem;
+      border-radius: 28px;
+      box-shadow: var(--shadow-sm);
+      border-left: 6px solid var(--accent-orange);
+    }
+
+    /* registration iframe section */
+    .form-iframe-wrapper {
+      background: white;
+      border-radius: 32px;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      border: 1px solid #eef2f5;
+    }
+    iframe {
+      width: 100%;
+      min-height: 750px;
+      border: none;
+    }
+
+    /* footer */
+    footer {
+      background: #0a1c2c;
+      color: #cddfe7;
+      padding: 3rem 5% 2rem;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .social-links a {
+      color: white;
+      background: rgba(255,255,255,0.1);
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+      border-radius: 30px;
+      text-align: center;
+      line-height: 38px;
+      margin-right: 12px;
+      transition: 0.2s;
+    }
+    .social-links a:hover { background: var(--accent-orange); transform: translateY(-3px); }
+    .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #2d3e4e; }
+
+    @media (max-width: 768px) {
+      nav { flex-direction: column; gap: 12px; }
+      .nav-links { justify-content: center; gap: 1rem; }
+      .hero-content h1 { font-size: 1.9rem; }
+      .amharic-head { font-size: 1.4rem; }
+      .section-title { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-shield">
+    <div class="shield-icon">
+      <i class="fas fa-check"></i>
+    </div>
+    <div class="logo-text">
+      <h2>GAGE UNIVERSITY COLLEGE</h2>
+      <p>Fully Accredited — 100% Practical-Supported Training</p>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#programs">Departments</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#locations">Locations</a>
+    <a href="#register-now" class="btn-register-nav">Register Now</a>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-calendar-alt"></i> Summer 2026 Enrollment Open</div>
+      <h1>Gage University College — <span>Premium Summer Classes 2026</span></h1>
+      <div class="amharic-head">የጌጅ ዩኒቨርሲቲ ኮሌጅ የክረምት ስልጠና</div>
+      <p style="font-size: 1.1rem; margin: 1rem 0 0.5rem; max-width: 550px;">🚀 Practical-driven training, globally aligned curriculum, and flexible learning paths.</p>
+      <div class="flex-badges">
+        <span class="schedule-pill"><i class="fas fa-sun"></i> Day (በቀን)</span>
+        <span class="schedule-pill"><i class="fas fa-moon"></i> Night (በማታ)</span>
+        <span class="schedule-pill"><i class="fas fa-globe"></i> Distance/Online (በሩቅ)</span>
+        <span class="schedule-pill"><i class="fas fa-calendar-week"></i> Weekend (ቅዳሜ እና እሁድ)</span>
+      </div>
+      <div class="cta-group">
+        <a href="#programs" class="btn-primary"><i class="fas fa-book-open"></i> Explore Courses</a>
+        <a href="#register-now" class="btn-outline"><i class="fas fa-edit"></i> Apply Online Now</a>
+      </div>
+    </div>
+    <div style="flex:0.8; text-align:center;">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 320'%3E%3Crect width='400' height='320' fill='%23eef2f5' rx='30'/%3E%3Cpath fill='%231a4d2c' d='M120,100 L280,100 L300,160 L200,240 L100,160 Z' opacity='0.1'/%3E%3Ctext x='200' y='170' font-size='18' fill='%230a2f5a' text-anchor='middle' font-weight='bold'%3EGAGE%3C/text%3E%3Ctext x='200' y='200' font-size='12' fill='%23e67e22' text-anchor='middle'%3Eexcellence%3C/text%3E%3C/svg%3E" alt="illustration" style="max-width:100%;">
+    </div>
+  </div>
+</section>
+
+<!-- Programs & Departments Section with Tabs (Interactive) -->
+<section id="programs" class="section">
+  <h2 class="section-title">📚 Academic Departments & Summer Tracks</h2>
+  <div class="tabs-container" id="tabHeaders">
+    <button class="tab-btn active" data-tab="tab1">🏦 Business & Finance</button>
+    <button class="tab-btn" data-tab="tab2">🎨 Creative Art & Media</button>
+    <button class="tab-btn" data-tab="tab3">💻 Information Technology</button>
+    <button class="tab-btn" data-tab="tab4">🔧 Technical Skills</button>
+    <button class="tab-btn" data-tab="tab5">🌍 Language & Certifications</button>
+  </div>
+  <div id="tabContent">
+    <!-- Tab1: Business & Finance -->
+    <div class="tab-pane active" id="tab1">
+      <div class="courses-grid">
+        <div class="course-card"><i class="fas fa-chart-line"></i><h4>Modern Accountancy</h4><p>ሙሉ የሂሳብ መዝገብ አያያዝ</p></div>
+        <div class="course-card"><i class="fas fa-calculator"></i><h4>IFRS-Based Peachtree Accounting</h4><p>Practical Peachtree + IFRS</p></div>
+        <div class="course-card"><i class="fas fa-ship"></i><h4>Import/Export Logistics</h4><p>Global trade & documentation</p></div>
+        <div class="course-card"><i class="fas fa-lightbulb"></i><h4>Business & Entrepreneurship</h4><p>Startup mindset</p></div>
+        <div class="course-card"><i class="fas fa-chart-simple"></i><h4>Capital Market & Finance</h4><p>Investment analysis</p></div>
+        <div class="course-card"><i class="fas fa-headset"></i><h4>Sales & Customer Service Excellence</h4><p>CRM & soft skills</p></div>
+        <div class="course-card"><i class="fas fa-flask"></i><h4>Research Methods & Software</h4><p>SPSS, STATA, NVivo</p></div>
+      </div>
+    </div>
+    <!-- Tab2: Creative Art & Media -->
+    <div class="tab-pane" id="tab2" style="display:none;">
+      <div class="courses-grid">
+        <div class="course-card"><i class="fas fa-paintbrush"></i><h4>Adv. Graphic Design & Motion</h4><p><span class="badge-soft">Ps</span> <span class="badge-soft">Ai</span> <span class="badge-soft">Ae</span> <span class="badge-soft">Blender</span> <span class="badge-soft">Lumion</span></p></div>
+        <div class="course-card"><i class="fas fa-newspaper"></i><h4>Journalism & Digital Marketing</h4><p>Media ethics + SEO</p></div>
+        <div class="course-card"><i class="fas fa-camera"></i><h4>Photography, Videography & Cinematography</h4><p>DaVinci, Premiere Pro</p></div>
+        <div class="course-card"><i class="fas fa-mask"></i><h4>Film & Theatrical Art</h4><p>Directing & screenplay</p></div>
+        <div class="course-card"><i class="fas fa-cubes"></i><h4>Animation & Visual Effects</h4><p>3D animation & VFX</p></div>
+      </div>
+    </div>
+    <!-- Tab3: IT -->
+    <div class="tab-pane" id="tab3" style="display:none;">
+      <div class="courses-grid">
+        <div class="course-card"><i class="fab fa-react"></i><h4>MERN Stack Web & Mobile Dev</h4><p>React, Node, MongoDB, Express</p></div>
+        <div class="course-card"><i class="fab fa-java"></i><h4>Software Dev, Programming & DB</h4><p>Java/Python, SQL, NoSQL</p></div>
+        <div class="course-card"><i class="fas fa-brain"></i><h4>Artificial Intelligence & Data Science</h4><p>ML, Python, Tableau</p></div>
+        <div class="course-card"><i class="fas fa-laptop"></i><h4>Basic Computer Skills</h4><p>Windows, Office 365</p></div>
+        <div class="course-card"><i class="fas fa-robot"></i><h4>Robotics & Automation</h4><p>Arduino, IoT basics</p></div>
+        <div class="course-card"><i class="fas fa-shield-haltered"></i><h4>Cyber Security & Ethical Hacking</h4><p>Pen testing, network security</p></div>
+      </div>
+    </div>
+    <!-- Tab4: Technical Skills -->
+    <div class="tab-pane" id="tab4" style="display:none;">
+      <div class="courses-grid">
+        <div class="course-card"><i class="fas fa-draw-polygon"></i><h4>Interior Design & Space Planning</h4><p>AutoCAD, 3ds Max</p></div>
+        <div class="course-card"><i class="fas fa-solar-panel"></i><h4>Building Electrical & Solar Panel Installation</h4><p>PV design & safety</p></div>
+        <div class="course-card"><i class="fas fa-video"></i><h4>CCTV & Security Solutions & Networking</h4><p>IP cameras, configuration</p></div>
+        <div class="course-card"><i class="fas fa-tools"></i><h4>Computer, Mobile & Office Machine Maintenance</h4><p>Hardware repair</p></div>
+        <div class="course-card"><i class="fas fa-chalkboard-user"></i><h4>Project Management (Agile, Scrum, Waterfall)</h4><p>Jira, MS Project</p></div>
+        <div class="course-card"><i class="fas fa-map"></i><h4>GIS (Geographic Information Systems)</h4><p>ArcGIS, QGIS</p></div>
+      </div>
+    </div>
+    <!-- Tab5: Language -->
+    <div class="tab-pane" id="tab5" style="display:none;">
+      <div class="courses-grid">
+        <div class="course-card"><i class="fas fa-language"></i><h4>Languages: English, Mandarin, French, Amharic, Afan Oromo</h4><p>Intensive speaking & writing</p></div>
+        <div class="course-card"><i class="fas fa-certificate"></i><h4>Exam Prep Badges</h4><p><span class="badge-soft">TOEFL (ETS)</span> <span class="badge-soft">IELTS</span> <span class="badge-soft">Duolingo</span> <span class="badge-soft">SAT</span> <span class="badge-soft">Cisco CCNA</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Schedule & Flexibility Block -->
+<section id="schedule" class="section section-alt">
+  <h2 class="section-title">⏳ Choose Your Learning Path</h2>
+  <div class="flex-schedule">
+    <div class="schedule-card"><i class="fas fa-sun"></i><h3>Day (በቀን)</h3><p>Morning & Afternoon sessions</p></div>
+    <div class="schedule-card"><i class="fas fa-moon"></i><h3>Night (በማታ)</h3><p>Evening classes (5PM - 9PM)</p></div>
+    <div class="schedule-card"><i class="fas fa-wifi"></i><h3>Remote/Distance (በሩቅ)</h3><p>Live & recorded online</p></div>
+    <div class="schedule-card"><i class="fas fa-calendar-alt"></i><h3>Weekend (ቅዳሜ እና እሁድ)</h3><p>Saturday & Sunday</p></div>
+  </div>
+  <div style="text-align:center; margin-top:0.5rem"><span class="badge-soft"><i class="fas fa-clock"></i> Flexible scheduling – study at your own rhythm</span></div>
+</section>
+
+<!-- Campus Locations Section -->
+<section id="locations" class="section">
+  <h2 class="section-title">📍 Our Premium Campuses</h2>
+  <div class="locations-grid">
+    <div class="location-card"><i class="fas fa-building" style="font-size: 1.8rem; color:var(--primary-green);"></i><h3>Piazza Branch</h3><p>Eliana Hotel, 2nd Floor<br>Addis Ababa, Ethiopia</p></div>
+    <div class="location-card"><i class="fas fa-city"></i><h3>Megenagna Branch</h3><p>Derartu Building, 5th Floor<br>Near Megenagna Square</p></div>
+    <div class="location-card"><i class="fas fa-hotel"></i><h3>Adama Branch</h3><p>Ras Hotel, 2nd Floor<br>Adama City</p></div>
+  </div>
+  <div style="margin-top: 2rem; background: #eef2f5; border-radius: 24px; padding: 1rem; text-align: center; font-size: 0.9rem;">
+    <i class="fas fa-map-marker-alt"></i> Google Maps integration available — visit any campus for counseling.
+  </div>
+</section>
+
+<!-- Online Registration Portal (iframe + fallback info) -->
+<section id="register-now" class="section section-alt">
+  <h2 class="section-title">📋 Online Registration Portal</h2>
+  <p style="margin-bottom: 1.5rem;">Fill out the official Gage University College Summer Class registration form. Secure & instant submission.</p>
+  <div class="form-iframe-wrapper">
+    <!-- Live Google Form embed (exact provided link) -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfL9cqIElrdwD29leO0dDC6EwU0W5XmNIRkT3UMdNfeOrMYng/viewform?embedded=true" title="Gage Summer Registration Form" loading="lazy">
+      Loading form…
+    </iframe>
+  </div>
+  <div style="margin-top: 1.2rem; font-size: 0.85rem; background: #fff3e0; padding: 0.8rem; border-radius: 20px;">
+    <i class="fas fa-phone-alt"></i> Need help? Call our admission support: <strong>+251 906 7777 55</strong> / <strong>+251 906 7777 99</strong>
+  </div>
+</section>
+
+<!-- Footer & Social Links -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="logo-shield" style="margin-bottom: 1rem;">
+        <div class="shield-icon" style="width: 40px; height: 44px;"><i class="fas fa-check"></i></div>
+        <div class="logo-text"><h2 style="color:white;">GAGE University College</h2></div>
+      </div>
+      <p style="max-width: 280px;">ሙሉ እውቅና ያለው — 100% በተግባር የተደገፈ ስልጠና እንሰጣለን::</p>
+    </div>
+    <div>
+      <h4>Quick Contacts</h4>
+      <p><i class="fas fa-phone"></i> +251 906 7777 55</p>
+      <p><i class="fas fa-phone-alt"></i> +251 906 7777 99</p>
+      <p><i class="fas fa-envelope"></i> summer@gage.edu.et</p>
+    </div>
+    <div>
+      <h4>Follow Us</h4>
+      <div class="social-links">
+        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+      <div style="margin-top: 1rem;">
+        <a href="https://play.google.com/store/apps/details?id=ethio.app.gageuniversitycollege" target="_blank" style="color:#cddfe7; text-decoration:underline;">📱 Our App on Google Play</a><br>
+        <a href="https://www.scholaro.com/u/Gage-University-College-28811" target="_blank" style="color:#cddfe7; text-decoration:underline;">🎓 Scholaro Profile</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Gage University College – Empowering Future Leaders. All rights reserved. | Fully Accredited Institute</p>
+  </div>
+</footer>
+
+<!-- Interactive Tabs JS + smooth scroll -->
+<script>
+  // Tab switching logic
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panes = {
+    tab1: document.getElementById('tab1'),
+    tab2: document.getElementById('tab2'),
+    tab3: document.getElementById('tab3'),
+    tab4: document.getElementById('tab4'),
+    tab5: document.getElementById('tab5')
+  };
+
+  function activateTab(tabId) {
+    for (let key in panes) {
+      if (panes[key]) panes[key].style.display = 'none';
+    }
+    if (panes[tabId]) panes[tabId].style.display = 'block';
+    tabBtns.forEach(btn => {
+      if (btn.getAttribute('data-tab') === tabId) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const tabId = btn.getAttribute('data-tab');
+      if (tabId) activateTab(tabId);
+    });
+  });
+
+  // ensure initial active pane
+  activateTab('tab1');
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
