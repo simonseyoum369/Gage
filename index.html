@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Gage University College | Summer Class 2026 – Premium Training</title>
-  <!-- Google Fonts & Font Awesome 6 (free CDN) -->
+  <title>Gage University College | Summer Class 2026 – Premium Practical Training</title>
+  <!-- Google Fonts + Font Awesome 6 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
 
     :root {
       --primary-green: #1a4d2c;    /* deep forest green (logo top) */
-      --primary-blue: #0a2f5a;     /* royal blue/navy (logo bottom) */
+      --primary-blue: #0a2f5a;     /* royal blue / navy (logo bottom) */
       --accent-orange: #e67e22;
       --accent-gold: #f3b33d;
       --light-bg: #f8fafc;
@@ -34,26 +34,17 @@
       --shadow-md: 0 20px 35px -15px rgba(0,0,0,0.1);
     }
 
-    /* Logo styling (shield + checkmark) */
+    /* Logo styling with actual image (logo.jpg) */
     .logo-shield {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .shield-icon {
-      position: relative;
-      width: 48px;
+    .logo-img {
       height: 52px;
-      background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green) 50%, var(--primary-blue) 50%, var(--primary-blue) 100%);
-      clip-path: polygon(50% 0%, 100% 15%, 100% 70%, 50% 100%, 0% 70%, 0% 15%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .shield-icon i {
-      font-size: 28px;
-      color: white;
-      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
     }
     .logo-text h2 {
       font-size: 1.4rem;
@@ -134,7 +125,7 @@
     }
     .btn-outline:hover { background: var(--primary-blue); color: white; }
 
-    /* hero */
+    /* hero + video container */
     .hero {
       background: linear-gradient(105deg, #ffffff 0%, #f4f9ff 100%);
       padding: 3rem 5% 4rem;
@@ -188,6 +179,30 @@
       border-left: 4px solid var(--accent-orange);
     }
     .cta-group { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    
+    /* video card */
+    .video-card {
+      flex: 0.9;
+      background: #fff;
+      border-radius: 32px;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      transition: 0.2s;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .video-card iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+    }
+    .video-caption {
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      background: white;
+      font-size: 0.85rem;
+      color: var(--primary-blue);
+      text-align: center;
+    }
 
     /* sections */
     .section {
@@ -291,19 +306,32 @@
       border-left: 6px solid var(--accent-orange);
     }
 
-    /* registration iframe section */
-    .form-iframe-wrapper {
-      background: white;
-      border-radius: 32px;
+    /* registration CTA panel (touchable link, no direct iframe) */
+    .register-panel {
+      background: linear-gradient(115deg, #ffffff 0%, #fef7e8 100%);
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
       box-shadow: var(--shadow-md);
-      overflow: hidden;
-      border: 1px solid #eef2f5;
+      border: 1px solid rgba(230,126,34,0.2);
     }
-    iframe {
-      width: 100%;
-      min-height: 750px;
-      border: none;
+    .register-big-btn {
+      background: var(--accent-orange);
+      color: white;
+      font-size: 1.6rem;
+      padding: 1rem 2.5rem;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: 0.2s;
+      box-shadow: 0 12px 25px -8px rgba(230,126,34,0.4);
+      margin: 1rem 0;
     }
+    .register-big-btn i { font-size: 2rem; }
+    .register-big-btn:hover { background: #c0392b; transform: scale(1.02); }
 
     /* footer */
     footer {
@@ -331,6 +359,12 @@
     }
     .social-links a:hover { background: var(--accent-orange); transform: translateY(-3px); }
     .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #2d3e4e; }
+    .footer-logo-img {
+      height: 45px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
 
     @media (max-width: 768px) {
       nav { flex-direction: column; gap: 12px; }
@@ -338,6 +372,8 @@
       .hero-content h1 { font-size: 1.9rem; }
       .amharic-head { font-size: 1.4rem; }
       .section-title { font-size: 1.6rem; }
+      .register-big-btn { font-size: 1.2rem; padding: 0.8rem 1.8rem; }
+      .logo-img { height: 42px; }
     }
   </style>
 </head>
@@ -345,9 +381,8 @@
 
 <nav>
   <div class="logo-shield">
-    <div class="shield-icon">
-      <i class="fas fa-check"></i>
-    </div>
+    <!-- LOCAL LOGO IMAGE: logo.jpg uploaded next to index.html -->
+    <img src="logo.jpg" alt="Gage University College Official Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/200x60/1a4d2c/white?text=GAGE+UC';">
     <div class="logo-text">
       <h2>GAGE UNIVERSITY COLLEGE</h2>
       <p>Fully Accredited — 100% Practical-Supported Training</p>
@@ -361,14 +396,14 @@
   </div>
 </nav>
 
-<!-- Hero Section -->
+<!-- Hero Section with embedded YT video (provided URL) -->
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-content">
       <div class="hero-badge"><i class="fas fa-calendar-alt"></i> Summer 2026 Enrollment Open</div>
       <h1>Gage University College — <span>Premium Summer Classes 2026</span></h1>
       <div class="amharic-head">የጌጅ ዩኒቨርሲቲ ኮሌጅ የክረምት ስልጠና</div>
-      <p style="font-size: 1.1rem; margin: 1rem 0 0.5rem; max-width: 550px;">🚀 Practical-driven training, globally aligned curriculum, and flexible learning paths.</p>
+      <p style="font-size: 1.1rem; margin: 1rem 0 0.5rem; max-width: 550px;">🔥 Practical-driven curriculum • Globally aligned • Flexible learning: Day, Night, Distance & Weekend options.</p>
       <div class="flex-badges">
         <span class="schedule-pill"><i class="fas fa-sun"></i> Day (በቀን)</span>
         <span class="schedule-pill"><i class="fas fa-moon"></i> Night (በማታ)</span>
@@ -380,13 +415,17 @@
         <a href="#register-now" class="btn-outline"><i class="fas fa-edit"></i> Apply Online Now</a>
       </div>
     </div>
-    <div style="flex:0.8; text-align:center;">
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 320'%3E%3Crect width='400' height='320' fill='%23eef2f5' rx='30'/%3E%3Cpath fill='%231a4d2c' d='M120,100 L280,100 L300,160 L200,240 L100,160 Z' opacity='0.1'/%3E%3Ctext x='200' y='170' font-size='18' fill='%230a2f5a' text-anchor='middle' font-weight='bold'%3EGAGE%3C/text%3E%3Ctext x='200' y='200' font-size='12' fill='%23e67e22' text-anchor='middle'%3Eexcellence%3C/text%3E%3C/svg%3E" alt="illustration" style="max-width:100%;">
+    <div class="video-card">
+      <!-- YouTube video embed from requested URL: https://youtu.be/sk7c-SppYmY -->
+      <iframe src="https://www.youtube.com/embed/sk7c-SppYmY" title="Gage University College promo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-caption">
+        <i class="fab fa-youtube"></i> GAGE University College – Excellence in Education
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Programs & Departments Section with Tabs (Interactive) -->
+<!-- Programs & Departments Section with Interactive Tabs -->
 <section id="programs" class="section">
   <h2 class="section-title">📚 Academic Departments & Summer Tracks</h2>
   <div class="tabs-container" id="tabHeaders">
@@ -472,34 +511,42 @@
     <div class="location-card"><i class="fas fa-hotel"></i><h3>Adama Branch</h3><p>Ras Hotel, 2nd Floor<br>Adama City</p></div>
   </div>
   <div style="margin-top: 2rem; background: #eef2f5; border-radius: 24px; padding: 1rem; text-align: center; font-size: 0.9rem;">
-    <i class="fas fa-map-marker-alt"></i> Google Maps integration available — visit any campus for counseling.
+    <i class="fas fa-map-marker-alt"></i> Visit any campus for free consultation & guided tour.
   </div>
 </section>
 
-<!-- Online Registration Portal (iframe + fallback info) -->
+<!-- Registration Portal – Touchable Link (no direct iframe) -->
 <section id="register-now" class="section section-alt">
   <h2 class="section-title">📋 Online Registration Portal</h2>
-  <p style="margin-bottom: 1.5rem;">Fill out the official Gage University College Summer Class registration form. Secure & instant submission.</p>
-  <div class="form-iframe-wrapper">
-    <!-- Live Google Form embed (exact provided link) -->
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfL9cqIElrdwD29leO0dDC6EwU0W5XmNIRkT3UMdNfeOrMYng/viewform?embedded=true" title="Gage Summer Registration Form" loading="lazy">
-      Loading form…
-    </iframe>
+  <div class="register-panel">
+    <i class="fas fa-file-alt" style="font-size: 3rem; color: var(--primary-green); opacity: 0.8;"></i>
+    <h3 style="font-size: 1.8rem; margin: 0.5rem 0;">Secure your seat for Summer 2026</h3>
+    <p style="max-width: 600px; margin: 0 auto 1rem;">Complete the official Gage University College registration form. It only takes 3 minutes.</p>
+    <!-- Touchable link: opens the Google Form in a new tab (clean, no iframe) -->
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfL9cqIElrdwD29leO0dDC6EwU0W5XmNIRkT3UMdNfeOrMYng/viewform" target="_blank" rel="noopener noreferrer" class="register-big-btn">
+      <i class="fas fa-pen-alt"></i> Apply Now (Online Form)
+      <i class="fas fa-arrow-right"></i>
+    </a>
+    <div style="margin-top: 1rem; font-size: 0.9rem;">
+      <i class="fas fa-lock"></i> Secure & encrypted | No login required
+    </div>
   </div>
-  <div style="margin-top: 1.2rem; font-size: 0.85rem; background: #fff3e0; padding: 0.8rem; border-radius: 20px;">
-    <i class="fas fa-phone-alt"></i> Need help? Call our admission support: <strong>+251 906 7777 55</strong> / <strong>+251 906 7777 99</strong>
+  <div style="margin-top: 1.5rem; text-align: center; background: #fff3e0; padding: 0.9rem; border-radius: 60px; max-width: 500px; margin-left: auto; margin-right: auto;">
+    <i class="fas fa-phone-alt"></i> Admission support: <strong>+251 906 7777 55</strong> / <strong>+251 906 7777 99</strong>
   </div>
 </section>
 
-<!-- Footer & Social Links -->
+<!-- Footer with YouTube Channel logo source & Social Links -->
 <footer>
   <div class="footer-grid">
     <div>
       <div class="logo-shield" style="margin-bottom: 1rem;">
-        <div class="shield-icon" style="width: 40px; height: 44px;"><i class="fas fa-check"></i></div>
+        <!-- Footer also uses the same local logo with white filter for dark bg -->
+        <img src="logo.jpg" alt="Gage University College Logo" class="footer-logo-img" style="height: 45px; width: auto; margin-right: 10px;" onerror="this.onerror=null; this.style.display='none';">
         <div class="logo-text"><h2 style="color:white;">GAGE University College</h2></div>
       </div>
       <p style="max-width: 280px;">ሙሉ እውቅና ያለው — 100% በተግባር የተደገፈ ስልጠና እንሰጣለን::</p>
+      <p style="margin-top: 10px;"><i class="fab fa-youtube"></i> Official: <a href="https://www.youtube.com/@streamsofknowledge" target="_blank" style="color:#f3b33d;">GAGE UC YouTube Channel</a></p>
     </div>
     <div>
       <h4>Quick Contacts</h4>
@@ -508,7 +555,7 @@
       <p><i class="fas fa-envelope"></i> summer@gage.edu.et</p>
     </div>
     <div>
-      <h4>Follow Us</h4>
+      <h4>Follow & Explore</h4>
       <div class="social-links">
         <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -523,11 +570,10 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Gage University College – Empowering Future Leaders. All rights reserved. | Fully Accredited Institute</p>
+    <p>© 2026 Gage University College – Fully Accredited | 100% Practical-Supported Training | Empowering Future Leaders</p>
   </div>
 </footer>
 
-<!-- Interactive Tabs JS + smooth scroll -->
 <script>
   // Tab switching logic
   const tabBtns = document.querySelectorAll('.tab-btn');
@@ -559,11 +605,9 @@
       if (tabId) activateTab(tabId);
     });
   });
-
-  // ensure initial active pane
   activateTab('tab1');
 
-  // Smooth scroll for anchor links
+  // smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
