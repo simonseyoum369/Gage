@@ -7,7 +7,7 @@
   <!-- Google Fonts + Font Awesome 6 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -18,23 +18,44 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #1e2a32;
+      transition: background-color 0.3s ease, color 0.3s ease;
       scroll-behavior: smooth;
     }
 
+    /* Light Mode (Default) */
     :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --text-primary: #1e2a32;
+      --text-secondary: #4a5568;
       --primary-green: #1a4d2c;
       --primary-blue: #0a2f5a;
       --accent-orange: #e67e22;
       --accent-gold: #f3b33d;
-      --light-bg: #f8fafc;
-      --gray-soft: #eef2f5;
+      --card-bg: #ffffff;
       --shadow-sm: 0 10px 30px -12px rgba(0,0,0,0.08);
       --shadow-md: 0 20px 35px -15px rgba(0,0,0,0.1);
+      --border-light: #eef2f5;
     }
 
-    /* Logo styling with actual image */
+    /* Dark Mode */
+    body.dark {
+      --bg-primary: #0f1724;
+      --bg-secondary: #1a2332;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --card-bg: #1e2a3a;
+      --shadow-sm: 0 10px 30px -12px rgba(0,0,0,0.3);
+      --shadow-md: 0 20px 35px -15px rgba(0,0,0,0.4);
+      --border-light: #2d3e4e;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    /* Logo styling */
     .logo-shield {
       display: flex;
       align-items: center;
@@ -52,6 +73,9 @@
       line-height: 1.2;
       color: var(--primary-blue);
     }
+    body.dark .logo-text h2 {
+      color: #60a5fa;
+    }
     .logo-text p {
       font-size: 0.7rem;
       letter-spacing: 0.5px;
@@ -61,7 +85,7 @@
 
     /* Navigation */
     nav {
-      background: rgba(255,255,255,0.96);
+      background: var(--bg-primary);
       backdrop-filter: blur(6px);
       box-shadow: 0 2px 12px rgba(0,0,0,0.05);
       position: sticky;
@@ -73,6 +97,10 @@
       align-items: center;
       justify-content: space-between;
     }
+    body.dark nav {
+      background: rgba(15,23,36,0.96);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
     .nav-links {
       display: flex;
       gap: 1.8rem;
@@ -82,7 +110,7 @@
     .nav-links a {
       text-decoration: none;
       font-weight: 600;
-      color: #1e2a32;
+      color: var(--text-primary);
       transition: 0.2s;
       font-size: 0.95rem;
     }
@@ -93,10 +121,23 @@
       padding: 0.5rem 1.3rem;
       border-radius: 40px;
       font-weight: 700;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .btn-register-nav:hover { background: #d35400; color: white !important; }
+    .btn-register-nav:hover { background: #d35400; }
 
+    /* Dark Mode Toggle Button */
+    .theme-toggle {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: 40px;
+      padding: 0.4rem 1rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: 0.2s;
+      color: var(--text-primary);
+    }
+    .theme-toggle:hover { transform: scale(1.05); }
+
+    /* Buttons */
     .btn-primary {
       background: var(--accent-orange);
       border: none;
@@ -122,10 +163,16 @@
       text-decoration: none;
       transition: 0.2s;
     }
+    body.dark .btn-outline {
+      border-color: #60a5fa;
+      color: #60a5fa;
+    }
     .btn-outline:hover { background: var(--primary-blue); color: white; }
+    body.dark .btn-outline:hover { background: #60a5fa; color: #0f1724; }
 
+    /* Hero Section */
     .hero {
-      background: linear-gradient(105deg, #ffffff 0%, #f4f9ff 100%);
+      background: linear-gradient(105deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
       padding: 3rem 5% 4rem;
     }
     .hero-grid {
@@ -161,6 +208,7 @@
       color: var(--primary-blue);
       margin: 0.5rem 0;
     }
+    body.dark .amharic-head { color: #60a5fa; }
     .flex-badges {
       display: flex;
       flex-wrap: wrap;
@@ -168,7 +216,7 @@
       margin: 1.5rem 0;
     }
     .schedule-pill {
-      background: white;
+      background: var(--card-bg);
       padding: 0.4rem 1.2rem;
       border-radius: 30px;
       font-weight: 600;
@@ -178,13 +226,14 @@
     }
     .cta-group { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.5rem; }
     
+    /* Video Card */
     .video-card {
       flex: 0.9;
-      background: #fff;
+      background: var(--card-bg);
       border-radius: 32px;
       box-shadow: var(--shadow-md);
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.05);
+      border: 1px solid var(--border-light);
     }
     .video-card iframe {
       width: 100%;
@@ -194,17 +243,65 @@
     .video-caption {
       padding: 0.75rem 1rem;
       font-weight: 600;
-      background: white;
+      background: var(--card-bg);
       font-size: 0.85rem;
-      color: var(--primary-blue);
+      color: var(--text-primary);
       text-align: center;
     }
 
+    /* Image Gallery Interactive Section */
+    .gallery-section {
+      padding: 4rem 5%;
+      background: var(--bg-secondary);
+    }
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .gallery-card {
+      flex: 1;
+      min-width: 280px;
+      background: var(--card-bg);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 40px -20px rgba(0,0,0,0.3);
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-card:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-caption {
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .gallery-caption h3 {
+      color: var(--accent-orange);
+      margin-bottom: 0.5rem;
+    }
+    .gallery-caption p {
+      color: var(--text-secondary);
+    }
+
+    /* Other Sections */
     .section {
       padding: 4rem 5%;
     }
     .section-alt {
-      background: var(--light-bg);
+      background: var(--bg-secondary);
     }
     .section-title {
       font-size: 2rem;
@@ -212,6 +309,7 @@
       margin-bottom: 2rem;
       position: relative;
       display: inline-block;
+      color: var(--text-primary);
     }
     .section-title:after {
       content: "";
@@ -228,7 +326,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
-      border-bottom: 2px solid #e2e8f0;
+      border-bottom: 2px solid var(--border-light);
       margin-bottom: 2rem;
     }
     .tab-btn {
@@ -240,7 +338,7 @@
       cursor: pointer;
       border-radius: 40px 40px 0 0;
       transition: 0.2s;
-      color: #4a5568;
+      color: var(--text-secondary);
     }
     .tab-btn.active {
       background: var(--primary-blue);
@@ -253,17 +351,16 @@
       margin-top: 1rem;
     }
     .course-card {
-      background: white;
+      background: var(--card-bg);
       border-radius: 24px;
       padding: 1.5rem;
       box-shadow: var(--shadow-sm);
-      transition: 0.2s;
-      border: 1px solid #eef2f5;
+      border: 1px solid var(--border-light);
     }
     .course-card i { font-size: 2rem; color: var(--primary-green); margin-bottom: 0.5rem; }
     .course-card h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .course-card p { color: #4b5563; font-size: 0.85rem; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.5rem; }
-    .badge-soft { background: #eef2ff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
+    .course-card p { color: var(--text-secondary); font-size: 0.85rem; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.5rem; }
+    .badge-soft { background: var(--bg-secondary); padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
 
     .flex-schedule {
       display: flex;
@@ -273,7 +370,7 @@
       margin: 2rem 0;
     }
     .schedule-card {
-      background: white;
+      background: var(--card-bg);
       flex: 1;
       min-width: 180px;
       padding: 1.5rem;
@@ -290,7 +387,7 @@
       margin-top: 1rem;
     }
     .location-card {
-      background: white;
+      background: var(--card-bg);
       flex: 1;
       padding: 1.5rem;
       border-radius: 28px;
@@ -299,7 +396,7 @@
     }
 
     .register-panel {
-      background: linear-gradient(115deg, #ffffff 0%, #fef7e8 100%);
+      background: linear-gradient(115deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
       border-radius: 48px;
       padding: 2.5rem;
       text-align: center;
@@ -318,10 +415,8 @@
       font-weight: 800;
       text-decoration: none;
       transition: 0.2s;
-      box-shadow: 0 12px 25px -8px rgba(230,126,34,0.4);
       margin: 1rem 0;
     }
-    .register-big-btn i { font-size: 2rem; }
     .register-big-btn:hover { background: #c0392b; transform: scale(1.02); }
 
     footer {
@@ -349,12 +444,6 @@
     }
     .social-links a:hover { background: var(--accent-orange); transform: translateY(-3px); }
     .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #2d3e4e; }
-    .footer-logo-img {
-      height: 45px;
-      width: auto;
-      filter: brightness(0) invert(1);
-      opacity: 0.9;
-    }
 
     @media (max-width: 768px) {
       nav { flex-direction: column; gap: 12px; }
@@ -371,8 +460,7 @@
 
 <nav>
   <div class="logo-shield">
-    <!-- LOCAL LOGO IMAGE: logo.JPG (uppercase extension as uploaded) -->
-    <img src="logo.JPG" alt="Gage University College Official Logo" class="logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/1a4d2c/white?text=GAGE+UC'; console.log('Logo failed to load, using fallback');">
+    <img src="logo.JPG" alt="Gage University College Official Logo" class="logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/1a4d2c/white?text=GAGE+UC';">
     <div class="logo-text">
       <h2>GAGE UNIVERSITY COLLEGE</h2>
       <p>Fully Accredited — 100% Practical-Supported Training</p>
@@ -382,7 +470,11 @@
     <a href="#programs">Departments</a>
     <a href="#schedule">Schedule</a>
     <a href="#locations">Locations</a>
+    <a href="#gallery">Campus Life</a>
     <a href="#register-now" class="btn-register-nav">Register Now</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Dark/Light mode">
+      <i class="fas fa-moon"></i> <span id="themeText">Dark</span>
+    </button>
   </div>
 </nav>
 
@@ -406,9 +498,33 @@
       </div>
     </div>
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/sk7c-SppYmY" title="Gage University College promo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/sk7c-SppYmY" title="Gage University College promo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       <div class="video-caption">
         <i class="fab fa-youtube"></i> GAGE University College – Excellence in Education
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interactive Image Gallery Section (image1 & image2) -->
+<section id="gallery" class="gallery-section">
+  <h2 class="section-title">📸 Campus Life & Community</h2>
+  <p style="text-align: center; margin-bottom: 1rem; color: var(--text-secondary);">Experience the vibrant student life at Gage University College</p>
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <img src="image1" alt="Students gathering on campus steps" onerror="this.src='https://via.placeholder.com/500x300/1a4d2c/white?text=Student+Life+Image+1';">
+      <div class="gallery-caption">
+        <h3><i class="fas fa-users"></i> Student Community</h3>
+        <p>Seven young scholars enjoying campus life, sharing ideas and building friendships on our historic stone steps.</p>
+        <span class="badge-soft">✨ Together We Grow</span>
+      </div>
+    </div>
+    <div class="gallery-card">
+      <img src="image2" alt="Students walking with books" onerror="this.src='https://via.placeholder.com/500x300/0a2f5a/white?text=Student+Life+Image+2';">
+      <div class="gallery-caption">
+        <h3><i class="fas fa-book-reader"></i> Academic Journey</h3>
+        <p>Three motivated students walking between classes, holding books and folders — the spirit of practical education.</p>
+        <span class="badge-soft">📚 Knowledge in Motion</span>
       </div>
     </div>
   </div>
@@ -510,7 +626,7 @@
       <i class="fas fa-lock"></i> Secure & encrypted | No login required
     </div>
   </div>
-  <div style="margin-top: 1.5rem; text-align: center; background: #fff3e0; padding: 0.9rem; border-radius: 60px; max-width: 500px; margin-left: auto; margin-right: auto;">
+  <div style="margin-top: 1.5rem; text-align: center; background: var(--bg-primary); padding: 0.9rem; border-radius: 60px; max-width: 500px; margin-left: auto; margin-right: auto; border: 1px solid var(--border-light);">
     <i class="fas fa-phone-alt"></i> Admission support: <strong>+251 906 7777 55</strong> / <strong>+251 906 7777 99</strong>
   </div>
 </section>
@@ -520,7 +636,7 @@
   <div class="footer-grid">
     <div>
       <div class="logo-shield" style="margin-bottom: 1rem;">
-        <img src="logo.JPG" alt="Gage University College Logo" class="footer-logo-img" style="height: 45px; width: auto; margin-right: 10px; filter: none; background: white; border-radius: 8px; padding: 4px;" onerror="this.style.display='none';">
+        <img src="logo.JPG" alt="Gage University College Logo" style="height: 45px; width: auto; margin-right: 10px; background: white; border-radius: 8px; padding: 4px;" onerror="this.style.display='none';">
         <div class="logo-text"><h2 style="color:white;">GAGE University College</h2></div>
       </div>
       <p style="max-width: 280px;">ሙሉ እውቅና ያለው — 100% በተግባር የተደገፈ ስልጠና እንሰጣለን::</p>
@@ -585,7 +701,42 @@
   });
   activateTab('tab1');
 
-  // smooth scroll
+  // Dark/Light Mode Toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const themeText = document.getElementById('themeText');
+  const icon = themeToggle.querySelector('i');
+  
+  function setTheme(isDark) {
+    if (isDark) {
+      document.body.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      themeText.textContent = 'Light';
+      icon.className = 'fas fa-sun';
+    } else {
+      document.body.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      themeText.textContent = 'Dark';
+      icon.className = 'fas fa-moon';
+    }
+  }
+  
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    setTheme(true);
+  } else if (savedTheme === 'light') {
+    setTheme(false);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setTheme(true);
+  } else {
+    setTheme(false);
+  }
+  
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.body.classList.contains('dark');
+    setTheme(!isDark);
+  });
+
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
