@@ -249,51 +249,80 @@
       text-align: center;
     }
 
-    /* Image Gallery Interactive Section */
-    .gallery-section {
+    /* INTEGRATED IMAGE CARDS - World Bank style interactive tiles */
+    .visual-spotlight {
       padding: 4rem 5%;
       background: var(--bg-secondary);
     }
-    .gallery-grid {
+    .spotlight-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
-      justify-content: center;
       margin-top: 2rem;
     }
-    .gallery-card {
+    .spotlight-card {
       flex: 1;
       min-width: 280px;
       background: var(--card-bg);
       border-radius: 28px;
       overflow: hidden;
       box-shadow: var(--shadow-md);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       cursor: pointer;
+      position: relative;
     }
-    .gallery-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 30px 40px -20px rgba(0,0,0,0.3);
+    .spotlight-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 30px 45px -20px rgba(0,0,0,0.4);
     }
-    .gallery-card img {
+    .image-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    .spotlight-card img {
       width: 100%;
-      height: 280px;
+      height: 320px;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s ease;
+      display: block;
     }
-    .gallery-card:hover img {
-      transform: scale(1.05);
+    .spotlight-card:hover img {
+      transform: scale(1.08);
     }
-    .gallery-caption {
-      padding: 1.5rem;
+    .overlay-content {
+      padding: 1.8rem;
       text-align: center;
+      background: var(--card-bg);
+      border-top: 3px solid var(--accent-orange);
     }
-    .gallery-caption h3 {
-      color: var(--accent-orange);
+    .overlay-content h3 {
+      font-size: 1.5rem;
+      color: var(--primary-blue);
       margin-bottom: 0.5rem;
     }
-    .gallery-caption p {
+    body.dark .overlay-content h3 {
+      color: #90cdf4;
+    }
+    .overlay-content p {
       color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+    .quote-icon {
+      font-size: 2rem;
+      color: var(--accent-orange);
+      opacity: 0.6;
+      margin-bottom: 0.5rem;
+    }
+    .interactive-badge {
+      display: inline-block;
+      background: var(--bg-secondary);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 0.8rem;
+      color: var(--primary-green);
     }
 
     /* Other Sections */
@@ -453,6 +482,7 @@
       .section-title { font-size: 1.6rem; }
       .register-big-btn { font-size: 1.2rem; padding: 0.8rem 1.8rem; }
       .logo-img { height: 42px; }
+      .spotlight-card img { height: 240px; }
     }
   </style>
 </head>
@@ -470,7 +500,6 @@
     <a href="#programs">Departments</a>
     <a href="#schedule">Schedule</a>
     <a href="#locations">Locations</a>
-    <a href="#gallery">Campus Life</a>
     <a href="#register-now" class="btn-register-nav">Register Now</a>
     <button class="theme-toggle" id="themeToggle" aria-label="Dark/Light mode">
       <i class="fas fa-moon"></i> <span id="themeText">Dark</span>
@@ -506,29 +535,37 @@
   </div>
 </section>
 
-<!-- Interactive Image Gallery Section (image1 & image2) -->
-<section id="gallery" class="gallery-section">
-  <h2 class="section-title">📸 Campus Life & Community</h2>
-  <p style="text-align: center; margin-bottom: 1rem; color: var(--text-secondary);">Experience the vibrant student life at Gage University College</p>
-  <div class="gallery-grid">
-    <div class="gallery-card">
-      <img src="image1" alt="Students gathering on campus steps" onerror="this.src='https://via.placeholder.com/500x300/1a4d2c/white?text=Student+Life+Image+1';">
-      <div class="gallery-caption">
-        <h3><i class="fas fa-users"></i> Student Community</h3>
-        <p>Seven young scholars enjoying campus life, sharing ideas and building friendships on our historic stone steps.</p>
-        <span class="badge-soft">✨ Together We Grow</span>
+<!-- INTEGRATED IMAGES: World-Bank-style graphical storytelling cards -->
+<div class="visual-spotlight">
+  <h2 class="section-title">🎓 Beyond the Classroom</h2>
+  <p style="margin-bottom: 1rem; color: var(--text-secondary);">A community that learns, grows, and innovates together — every step of the way.</p>
+  <div class="spotlight-grid">
+    <!-- Image 1 card: group on steps (image1.jpg) -->
+    <div class="spotlight-card">
+      <div class="image-wrapper">
+        <img src="image1.jpg" alt="Students collaborating on campus steps" onerror="this.src='https://via.placeholder.com/600x400/1a4d2c/white?text=Gage+Student+Community';">
+      </div>
+      <div class="overlay-content">
+        <div class="quote-icon"><i class="fas fa-users"></i></div>
+        <h3>Collaborative Spirit</h3>
+        <p>Seven young scholars, one vision — sharing knowledge, building networks, and creating impact right on our historic stone steps. At Gage, learning is a shared journey.</p>
+        <span class="interactive-badge"><i class="fas fa-heart"></i> 100% Practical Support</span>
       </div>
     </div>
-    <div class="gallery-card">
-      <img src="image2" alt="Students walking with books" onerror="this.src='https://via.placeholder.com/500x300/0a2f5a/white?text=Student+Life+Image+2';">
-      <div class="gallery-caption">
-        <h3><i class="fas fa-book-reader"></i> Academic Journey</h3>
-        <p>Three motivated students walking between classes, holding books and folders — the spirit of practical education.</p>
-        <span class="badge-soft">📚 Knowledge in Motion</span>
+    <!-- Image 2 card: three women walking with books (image2.jpg) -->
+    <div class="spotlight-card">
+      <div class="image-wrapper">
+        <img src="image2.jpg" alt="Students walking with books and folders" onerror="this.src='https://via.placeholder.com/600x400/0a2f5a/white?text=Gage+Students+in+Motion';">
+      </div>
+      <div class="overlay-content">
+        <div class="quote-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Purpose in Motion</h3>
+        <p>Empowered learners moving between theory and real-world application. Holding knowledge today, leading industries tomorrow.</p>
+        <span class="interactive-badge"><i class="fas fa-chalkboard-user"></i> Industry-Led Curriculum</span>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- Programs Section -->
 <section id="programs" class="section">
