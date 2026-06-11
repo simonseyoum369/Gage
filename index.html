@@ -24,8 +24,8 @@
     }
 
     :root {
-      --primary-green: #1a4d2c;    /* deep forest green (logo top) */
-      --primary-blue: #0a2f5a;     /* royal blue / navy (logo bottom) */
+      --primary-green: #1a4d2c;
+      --primary-blue: #0a2f5a;
       --accent-orange: #e67e22;
       --accent-gold: #f3b33d;
       --light-bg: #f8fafc;
@@ -34,14 +34,14 @@
       --shadow-md: 0 20px 35px -15px rgba(0,0,0,0.1);
     }
 
-    /* Logo styling with actual image (logo.jpg) */
+    /* Logo styling with actual image */
     .logo-shield {
       display: flex;
       align-items: center;
       gap: 12px;
     }
     .logo-img {
-      height: 52px;
+      height: 55px;
       width: auto;
       object-fit: contain;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
@@ -97,7 +97,6 @@
     }
     .btn-register-nav:hover { background: #d35400; color: white !important; }
 
-    /* Buttons */
     .btn-primary {
       background: var(--accent-orange);
       border: none;
@@ -125,7 +124,6 @@
     }
     .btn-outline:hover { background: var(--primary-blue); color: white; }
 
-    /* hero + video container */
     .hero {
       background: linear-gradient(105deg, #ffffff 0%, #f4f9ff 100%);
       padding: 3rem 5% 4rem;
@@ -180,14 +178,12 @@
     }
     .cta-group { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.5rem; }
     
-    /* video card */
     .video-card {
       flex: 0.9;
       background: #fff;
       border-radius: 32px;
       box-shadow: var(--shadow-md);
       overflow: hidden;
-      transition: 0.2s;
       border: 1px solid rgba(0,0,0,0.05);
     }
     .video-card iframe {
@@ -204,7 +200,6 @@
       text-align: center;
     }
 
-    /* sections */
     .section {
       padding: 4rem 5%;
     }
@@ -229,7 +224,6 @@
       border-radius: 2px;
     }
 
-    /* tabs & courses */
     .tabs-container {
       display: flex;
       flex-wrap: wrap;
@@ -271,7 +265,6 @@
     .course-card p { color: #4b5563; font-size: 0.85rem; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.5rem; }
     .badge-soft { background: #eef2ff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
 
-    /* schedule grid */
     .flex-schedule {
       display: flex;
       flex-wrap: wrap;
@@ -290,7 +283,6 @@
     }
     .schedule-card i { font-size: 2.2rem; color: var(--primary-blue); margin-bottom: 0.8rem; }
 
-    /* locations */
     .locations-grid {
       display: flex;
       flex-wrap: wrap;
@@ -306,7 +298,6 @@
       border-left: 6px solid var(--accent-orange);
     }
 
-    /* registration CTA panel (touchable link, no direct iframe) */
     .register-panel {
       background: linear-gradient(115deg, #ffffff 0%, #fef7e8 100%);
       border-radius: 48px;
@@ -333,7 +324,6 @@
     .register-big-btn i { font-size: 2rem; }
     .register-big-btn:hover { background: #c0392b; transform: scale(1.02); }
 
-    /* footer */
     footer {
       background: #0a1c2c;
       color: #cddfe7;
@@ -381,8 +371,8 @@
 
 <nav>
   <div class="logo-shield">
-    <!-- LOCAL LOGO IMAGE: logo.jpg uploaded next to index.html -->
-    <img src="logo.jpg" alt="Gage University College Official Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/200x60/1a4d2c/white?text=GAGE+UC';">
+    <!-- LOCAL LOGO IMAGE: logo.JPG (uppercase extension as uploaded) -->
+    <img src="logo.JPG" alt="Gage University College Official Logo" class="logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/1a4d2c/white?text=GAGE+UC'; console.log('Logo failed to load, using fallback');">
     <div class="logo-text">
       <h2>GAGE UNIVERSITY COLLEGE</h2>
       <p>Fully Accredited — 100% Practical-Supported Training</p>
@@ -396,7 +386,7 @@
   </div>
 </nav>
 
-<!-- Hero Section with embedded YT video (provided URL) -->
+<!-- Hero Section -->
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-content">
@@ -416,7 +406,6 @@
       </div>
     </div>
     <div class="video-card">
-      <!-- YouTube video embed from requested URL: https://youtu.be/sk7c-SppYmY -->
       <iframe src="https://www.youtube.com/embed/sk7c-SppYmY" title="Gage University College promo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <div class="video-caption">
         <i class="fab fa-youtube"></i> GAGE University College – Excellence in Education
@@ -425,7 +414,7 @@
   </div>
 </section>
 
-<!-- Programs & Departments Section with Interactive Tabs -->
+<!-- Programs Section -->
 <section id="programs" class="section">
   <h2 class="section-title">📚 Academic Departments & Summer Tracks</h2>
   <div class="tabs-container" id="tabHeaders">
@@ -436,7 +425,6 @@
     <button class="tab-btn" data-tab="tab5">🌍 Language & Certifications</button>
   </div>
   <div id="tabContent">
-    <!-- Tab1: Business & Finance -->
     <div class="tab-pane active" id="tab1">
       <div class="courses-grid">
         <div class="course-card"><i class="fas fa-chart-line"></i><h4>Modern Accountancy</h4><p>ሙሉ የሂሳብ መዝገብ አያያዝ</p></div>
@@ -448,7 +436,6 @@
         <div class="course-card"><i class="fas fa-flask"></i><h4>Research Methods & Software</h4><p>SPSS, STATA, NVivo</p></div>
       </div>
     </div>
-    <!-- Tab2: Creative Art & Media -->
     <div class="tab-pane" id="tab2" style="display:none;">
       <div class="courses-grid">
         <div class="course-card"><i class="fas fa-paintbrush"></i><h4>Adv. Graphic Design & Motion</h4><p><span class="badge-soft">Ps</span> <span class="badge-soft">Ai</span> <span class="badge-soft">Ae</span> <span class="badge-soft">Blender</span> <span class="badge-soft">Lumion</span></p></div>
@@ -458,7 +445,6 @@
         <div class="course-card"><i class="fas fa-cubes"></i><h4>Animation & Visual Effects</h4><p>3D animation & VFX</p></div>
       </div>
     </div>
-    <!-- Tab3: IT -->
     <div class="tab-pane" id="tab3" style="display:none;">
       <div class="courses-grid">
         <div class="course-card"><i class="fab fa-react"></i><h4>MERN Stack Web & Mobile Dev</h4><p>React, Node, MongoDB, Express</p></div>
@@ -469,7 +455,6 @@
         <div class="course-card"><i class="fas fa-shield-haltered"></i><h4>Cyber Security & Ethical Hacking</h4><p>Pen testing, network security</p></div>
       </div>
     </div>
-    <!-- Tab4: Technical Skills -->
     <div class="tab-pane" id="tab4" style="display:none;">
       <div class="courses-grid">
         <div class="course-card"><i class="fas fa-draw-polygon"></i><h4>Interior Design & Space Planning</h4><p>AutoCAD, 3ds Max</p></div>
@@ -480,7 +465,6 @@
         <div class="course-card"><i class="fas fa-map"></i><h4>GIS (Geographic Information Systems)</h4><p>ArcGIS, QGIS</p></div>
       </div>
     </div>
-    <!-- Tab5: Language -->
     <div class="tab-pane" id="tab5" style="display:none;">
       <div class="courses-grid">
         <div class="course-card"><i class="fas fa-language"></i><h4>Languages: English, Mandarin, French, Amharic, Afan Oromo</h4><p>Intensive speaking & writing</p></div>
@@ -490,7 +474,7 @@
   </div>
 </section>
 
-<!-- Schedule & Flexibility Block -->
+<!-- Schedule Section -->
 <section id="schedule" class="section section-alt">
   <h2 class="section-title">⏳ Choose Your Learning Path</h2>
   <div class="flex-schedule">
@@ -499,10 +483,9 @@
     <div class="schedule-card"><i class="fas fa-wifi"></i><h3>Remote/Distance (በሩቅ)</h3><p>Live & recorded online</p></div>
     <div class="schedule-card"><i class="fas fa-calendar-alt"></i><h3>Weekend (ቅዳሜ እና እሁድ)</h3><p>Saturday & Sunday</p></div>
   </div>
-  <div style="text-align:center; margin-top:0.5rem"><span class="badge-soft"><i class="fas fa-clock"></i> Flexible scheduling – study at your own rhythm</span></div>
 </section>
 
-<!-- Campus Locations Section -->
+<!-- Locations Section -->
 <section id="locations" class="section">
   <h2 class="section-title">📍 Our Premium Campuses</h2>
   <div class="locations-grid">
@@ -510,19 +493,15 @@
     <div class="location-card"><i class="fas fa-city"></i><h3>Megenagna Branch</h3><p>Derartu Building, 5th Floor<br>Near Megenagna Square</p></div>
     <div class="location-card"><i class="fas fa-hotel"></i><h3>Adama Branch</h3><p>Ras Hotel, 2nd Floor<br>Adama City</p></div>
   </div>
-  <div style="margin-top: 2rem; background: #eef2f5; border-radius: 24px; padding: 1rem; text-align: center; font-size: 0.9rem;">
-    <i class="fas fa-map-marker-alt"></i> Visit any campus for free consultation & guided tour.
-  </div>
 </section>
 
-<!-- Registration Portal – Touchable Link (no direct iframe) -->
+<!-- Registration Portal -->
 <section id="register-now" class="section section-alt">
   <h2 class="section-title">📋 Online Registration Portal</h2>
   <div class="register-panel">
     <i class="fas fa-file-alt" style="font-size: 3rem; color: var(--primary-green); opacity: 0.8;"></i>
     <h3 style="font-size: 1.8rem; margin: 0.5rem 0;">Secure your seat for Summer 2026</h3>
     <p style="max-width: 600px; margin: 0 auto 1rem;">Complete the official Gage University College registration form. It only takes 3 minutes.</p>
-    <!-- Touchable link: opens the Google Form in a new tab (clean, no iframe) -->
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSfL9cqIElrdwD29leO0dDC6EwU0W5XmNIRkT3UMdNfeOrMYng/viewform" target="_blank" rel="noopener noreferrer" class="register-big-btn">
       <i class="fas fa-pen-alt"></i> Apply Now (Online Form)
       <i class="fas fa-arrow-right"></i>
@@ -536,13 +515,12 @@
   </div>
 </section>
 
-<!-- Footer with YouTube Channel logo source & Social Links -->
+<!-- Footer -->
 <footer>
   <div class="footer-grid">
     <div>
       <div class="logo-shield" style="margin-bottom: 1rem;">
-        <!-- Footer also uses the same local logo with white filter for dark bg -->
-        <img src="logo.jpg" alt="Gage University College Logo" class="footer-logo-img" style="height: 45px; width: auto; margin-right: 10px;" onerror="this.onerror=null; this.style.display='none';">
+        <img src="logo.JPG" alt="Gage University College Logo" class="footer-logo-img" style="height: 45px; width: auto; margin-right: 10px; filter: none; background: white; border-radius: 8px; padding: 4px;" onerror="this.style.display='none';">
         <div class="logo-text"><h2 style="color:white;">GAGE University College</h2></div>
       </div>
       <p style="max-width: 280px;">ሙሉ እውቅና ያለው — 100% በተግባር የተደገፈ ስልጠና እንሰጣለን::</p>
