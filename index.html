@@ -249,7 +249,7 @@
       text-align: center;
     }
 
-    /* INTEGRATED IMAGE CARDS - World Bank style interactive tiles */
+    /* INTEGRATED IMAGE CARDS */
     .visual-spotlight {
       padding: 4rem 5%;
       background: var(--bg-secondary);
@@ -409,19 +409,67 @@
     }
     .schedule-card i { font-size: 2.2rem; color: var(--primary-blue); margin-bottom: 0.8rem; }
 
+    /* Updated Campus Locations Grid for 7 Branches */
     .locations-grid {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
     .location-card {
       background: var(--card-bg);
-      flex: 1;
       padding: 1.5rem;
       border-radius: 28px;
       box-shadow: var(--shadow-sm);
       border-left: 6px solid var(--accent-orange);
+      transition: all 0.3s ease;
+    }
+    .location-card:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-md);
+    }
+    .location-card i {
+      font-size: 1.8rem;
+      color: var(--primary-green);
+      margin-bottom: 0.8rem;
+    }
+    .location-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-blue);
+    }
+    body.dark .location-card h3 {
+      color: #90cdf4;
+    }
+    .location-address {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+      line-height: 1.4;
+    }
+    .location-hours {
+      font-size: 0.8rem;
+      color: var(--accent-orange);
+      margin-top: 0.5rem;
+      display: inline-block;
+      background: var(--bg-secondary);
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+    }
+    .map-link {
+      display: inline-block;
+      margin-top: 0.8rem;
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    body.dark .map-link {
+      color: #60a5fa;
+    }
+    .map-link i {
+      font-size: 0.8rem;
+      margin-left: 4px;
     }
 
     .register-panel {
@@ -483,6 +531,7 @@
       .register-big-btn { font-size: 1.2rem; padding: 0.8rem 1.8rem; }
       .logo-img { height: 42px; }
       .spotlight-card img { height: 240px; }
+      .locations-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -499,7 +548,7 @@
   <div class="nav-links">
     <a href="#programs">Departments</a>
     <a href="#schedule">Schedule</a>
-    <a href="#locations">Locations</a>
+    <a href="#locations">Campuses</a>
     <a href="#register-now" class="btn-register-nav">Register Now</a>
     <button class="theme-toggle" id="themeToggle" aria-label="Dark/Light mode">
       <i class="fas fa-moon"></i> <span id="themeText">Dark</span>
@@ -535,12 +584,11 @@
   </div>
 </section>
 
-<!-- INTEGRATED IMAGES: World-Bank-style graphical storytelling cards -->
+<!-- INTEGRATED IMAGES SECTION -->
 <div class="visual-spotlight">
   <h2 class="section-title">🎓 Beyond the Classroom</h2>
   <p style="margin-bottom: 1rem; color: var(--text-secondary);">A community that learns, grows, and innovates together — every step of the way.</p>
   <div class="spotlight-grid">
-    <!-- Image 1 card: group on steps (image1.jpg) -->
     <div class="spotlight-card">
       <div class="image-wrapper">
         <img src="image1.jpg" alt="Students collaborating on campus steps" onerror="this.src='https://via.placeholder.com/600x400/1a4d2c/white?text=Gage+Student+Community';">
@@ -548,11 +596,10 @@
       <div class="overlay-content">
         <div class="quote-icon"><i class="fas fa-users"></i></div>
         <h3>Collaborative Spirit</h3>
-        <p>one vision — sharing knowledge, building networks, and creating impact right on our historic stone steps. At Gage, learning is a shared journey.</p>
-        <span class="interactive-badge"><i class="fas fa-heart"></i></span>
+        <p>Seven young scholars, one vision — sharing knowledge, building networks, and creating impact right on our historic stone steps. At Gage, learning is a shared journey.</p>
+        <span class="interactive-badge"><i class="fas fa-heart"></i> 100% Practical Support</span>
       </div>
     </div>
-    <!-- Image 2 card: three women walking with books (image2.jpg) -->
     <div class="spotlight-card">
       <div class="image-wrapper">
         <img src="image2.jpg" alt="Students walking with books and folders" onerror="this.src='https://via.placeholder.com/600x400/0a2f5a/white?text=Gage+Students+in+Motion';">
@@ -561,13 +608,13 @@
         <div class="quote-icon"><i class="fas fa-book-open"></i></div>
         <h3>Purpose in Motion</h3>
         <p>Empowered learners moving between theory and real-world application. Holding knowledge today, leading industries tomorrow.</p>
-        <span class="interactive-badge"><i class="fas fa-chalkboard-user"></i></span>
+        <span class="interactive-badge"><i class="fas fa-chalkboard-user"></i> Industry-Led Curriculum</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Programs Section -->
+<!-- Programs Section (unchanged, but kept for completeness) -->
 <section id="programs" class="section">
   <h2 class="section-title">📚 Academic Departments & Summer Tracks</h2>
   <div class="tabs-container" id="tabHeaders">
@@ -589,41 +636,10 @@
         <div class="course-card"><i class="fas fa-flask"></i><h4>Research Methods & Software</h4><p>SPSS, STATA, NVivo</p></div>
       </div>
     </div>
-    <div class="tab-pane" id="tab2" style="display:none;">
-      <div class="courses-grid">
-        <div class="course-card"><i class="fas fa-paintbrush"></i><h4>Adv. Graphic Design & Motion</h4><p><span class="badge-soft">Ps</span> <span class="badge-soft">Ai</span> <span class="badge-soft">Ae</span> <span class="badge-soft">Blender</span> <span class="badge-soft">Lumion</span></p></div>
-        <div class="course-card"><i class="fas fa-newspaper"></i><h4>Journalism & Digital Marketing</h4><p>Media ethics + SEO</p></div>
-        <div class="course-card"><i class="fas fa-camera"></i><h4>Photography, Videography & Cinematography</h4><p>DaVinci, Premiere Pro</p></div>
-        <div class="course-card"><i class="fas fa-mask"></i><h4>Film & Theatrical Art</h4><p>Directing & screenplay</p></div>
-        <div class="course-card"><i class="fas fa-cubes"></i><h4>Animation & Visual Effects</h4><p>3D animation & VFX</p></div>
-      </div>
-    </div>
-    <div class="tab-pane" id="tab3" style="display:none;">
-      <div class="courses-grid">
-        <div class="course-card"><i class="fab fa-react"></i><h4>MERN Stack Web & Mobile Dev</h4><p>React, Node, MongoDB, Express</p></div>
-        <div class="course-card"><i class="fab fa-java"></i><h4>Software Dev, Programming & DB</h4><p>Java/Python, SQL, NoSQL</p></div>
-        <div class="course-card"><i class="fas fa-brain"></i><h4>Artificial Intelligence & Data Science</h4><p>ML, Python, Tableau</p></div>
-        <div class="course-card"><i class="fas fa-laptop"></i><h4>Basic Computer Skills</h4><p>Windows, Office 365</p></div>
-        <div class="course-card"><i class="fas fa-robot"></i><h4>Robotics & Automation</h4><p>Arduino, IoT basics</p></div>
-        <div class="course-card"><i class="fas fa-shield-haltered"></i><h4>Cyber Security & Ethical Hacking</h4><p>Pen testing, network security</p></div>
-      </div>
-    </div>
-    <div class="tab-pane" id="tab4" style="display:none;">
-      <div class="courses-grid">
-        <div class="course-card"><i class="fas fa-draw-polygon"></i><h4>Interior Design & Space Planning</h4><p>AutoCAD, 3ds Max</p></div>
-        <div class="course-card"><i class="fas fa-solar-panel"></i><h4>Building Electrical & Solar Panel Installation</h4><p>PV design & safety</p></div>
-        <div class="course-card"><i class="fas fa-video"></i><h4>CCTV & Security Solutions & Networking</h4><p>IP cameras, configuration</p></div>
-        <div class="course-card"><i class="fas fa-tools"></i><h4>Computer, Mobile & Office Machine Maintenance</h4><p>Hardware repair</p></div>
-        <div class="course-card"><i class="fas fa-chalkboard-user"></i><h4>Project Management (Agile, Scrum, Waterfall)</h4><p>Jira, MS Project</p></div>
-        <div class="course-card"><i class="fas fa-map"></i><h4>GIS (Geographic Information Systems)</h4><p>ArcGIS, QGIS</p></div>
-      </div>
-    </div>
-    <div class="tab-pane" id="tab5" style="display:none;">
-      <div class="courses-grid">
-        <div class="course-card"><i class="fas fa-language"></i><h4>Languages: English, Mandarin, French, Amharic, Afan Oromo</h4><p>Intensive speaking & writing</p></div>
-        <div class="course-card"><i class="fas fa-certificate"></i><h4>Exam Prep Badges</h4><p><span class="badge-soft">TOEFL (ETS)</span> <span class="badge-soft">IELTS</span> <span class="badge-soft">Duolingo</span> <span class="badge-soft">SAT</span> <span class="badge-soft">Cisco CCNA</span></p></div>
-      </div>
-    </div>
+    <div class="tab-pane" id="tab2" style="display:none;"><div class="courses-grid"><div class="course-card"><i class="fas fa-paintbrush"></i><h4>Adv. Graphic Design & Motion</h4><p><span class="badge-soft">Ps</span> <span class="badge-soft">Ai</span> <span class="badge-soft">Ae</span> <span class="badge-soft">Blender</span> <span class="badge-soft">Lumion</span></p></div><div class="course-card"><i class="fas fa-newspaper"></i><h4>Journalism & Digital Marketing</h4><p>Media ethics + SEO</p></div><div class="course-card"><i class="fas fa-camera"></i><h4>Photography, Videography & Cinematography</h4><p>DaVinci, Premiere Pro</p></div><div class="course-card"><i class="fas fa-mask"></i><h4>Film & Theatrical Art</h4><p>Directing & screenplay</p></div><div class="course-card"><i class="fas fa-cubes"></i><h4>Animation & Visual Effects</h4><p>3D animation & VFX</p></div></div></div>
+    <div class="tab-pane" id="tab3" style="display:none;"><div class="courses-grid"><div class="course-card"><i class="fab fa-react"></i><h4>MERN Stack Web & Mobile Dev</h4><p>React, Node, MongoDB, Express</p></div><div class="course-card"><i class="fab fa-java"></i><h4>Software Dev, Programming & DB</h4><p>Java/Python, SQL, NoSQL</p></div><div class="course-card"><i class="fas fa-brain"></i><h4>Artificial Intelligence & Data Science</h4><p>ML, Python, Tableau</p></div><div class="course-card"><i class="fas fa-laptop"></i><h4>Basic Computer Skills</h4><p>Windows, Office 365</p></div><div class="course-card"><i class="fas fa-robot"></i><h4>Robotics & Automation</h4><p>Arduino, IoT basics</p></div><div class="course-card"><i class="fas fa-shield-haltered"></i><h4>Cyber Security & Ethical Hacking</h4><p>Pen testing, network security</p></div></div></div>
+    <div class="tab-pane" id="tab4" style="display:none;"><div class="courses-grid"><div class="course-card"><i class="fas fa-draw-polygon"></i><h4>Interior Design & Space Planning</h4><p>AutoCAD, 3ds Max</p></div><div class="course-card"><i class="fas fa-solar-panel"></i><h4>Building Electrical & Solar Panel Installation</h4><p>PV design & safety</p></div><div class="course-card"><i class="fas fa-video"></i><h4>CCTV & Security Solutions & Networking</h4><p>IP cameras, configuration</p></div><div class="course-card"><i class="fas fa-tools"></i><h4>Computer, Mobile & Office Machine Maintenance</h4><p>Hardware repair</p></div><div class="course-card"><i class="fas fa-chalkboard-user"></i><h4>Project Management (Agile, Scrum, Waterfall)</h4><p>Jira, MS Project</p></div><div class="course-card"><i class="fas fa-map"></i><h4>GIS (Geographic Information Systems)</h4><p>ArcGIS, QGIS</p></div></div></div>
+    <div class="tab-pane" id="tab5" style="display:none;"><div class="courses-grid"><div class="course-card"><i class="fas fa-language"></i><h4>Languages: English, Mandarin, French, Amharic, Afan Oromo</h4><p>Intensive speaking & writing</p></div><div class="course-card"><i class="fas fa-certificate"></i><h4>Exam Prep Badges</h4><p><span class="badge-soft">TOEFL (ETS)</span> <span class="badge-soft">IELTS</span> <span class="badge-soft">Duolingo</span> <span class="badge-soft">SAT</span> <span class="badge-soft">Cisco CCNA</span></p></div></div></div>
   </div>
 </section>
 
@@ -638,13 +654,21 @@
   </div>
 </section>
 
-<!-- Locations Section -->
+<!-- Updated Campus Locations Section with 7 Branches from Google Maps -->
 <section id="locations" class="section">
-  <h2 class="section-title">📍 Our Premium Campuses</h2>
+  <h2 class="section-title">📍 Our Campuses & Branches</h2>
+  <p style="margin-bottom: 1rem; color: var(--text-secondary);">Seven convenient locations across Addis Ababa and beyond — find your nearest Gage campus.</p>
   <div class="locations-grid">
-    <div class="location-card"><i class="fas fa-building" style="font-size: 1.8rem; color:var(--primary-green);"></i><h3>Piazza Branch</h3><p>Eliana Hotel, 2nd Floor<br>Addis Ababa, Ethiopia</p></div>
-    <div class="location-card"><i class="fas fa-city"></i><h3>Megenagna Branch</h3><p>Derartu Building, 5th Floor<br>Near Megenagna Square</p></div>
-    <div class="location-card"><i class="fas fa-hotel"></i><h3>Adama Branch</h3><p>Ras Hotel, 2nd Floor<br>Adama City</p></div>
+    <div class="location-card"><i class="fas fa-university"></i><h3>Main Campus - Africa Ave</h3><div class="location-address">XQX8+FV7, Africa Avenue, Addis Ababa</div><span class="location-hours"><i class="far fa-clock"></i> Open 24 hours</span><a href="https://maps.app.goo.gl/LHvs8qJadGKrVLPs6" target="_blank" class="map-link">Get directions <i class="fas fa-external-link-alt"></i></a></div>
+    <div class="location-card"><i class="fas fa-landmark"></i><h3>Piazza Branch</h3><div class="location-address">2PRW+QQ5, Piazza, Addis Ababa<br>ጌጅ ዩኒቨርስቲ ኮሌጅ | ፒያሳ</div><span class="location-hours"><i class="fas fa-phone-alt"></i> +251 11 126 6004</span><a href="https://maps.app.goo.gl/LHvs8qJadGKrVLPs6" target="_blank" class="map-link">View on map <i class="fas fa-map-marker-alt"></i></a></div>
+    <div class="location-card"><i class="fas fa-building"></i><h3>Meskel Flower Branch</h3><div class="location-address">Megenagna, Addis Ababa<br>ጌጅ ዩኒቨርስቲ ኮሌጅ | መስቀል ፍላወር</div><span class="location-hours"><i class="far fa-clock"></i> Open until 18:30</span><a href="https://maps.app.goo.gl/LHvs8qJadGKrVLPs6" target="_blank" class="map-link">Get directions <i class="fas fa-external-link-alt"></i></a></div>
+    <div class="location-card"><i class="fas fa-headquarters"></i><h3>Head Office Megenagna</h3><div class="location-address">Megenagna, Addis Ababa<br>ጌጅ ዩኒቨርሲቲ ኮሌጅ መገነኛ</div><span class="location-hours"><i class="fas fa-phone-alt"></i> +251 90 581 8181</span><a href="https://maps.app.goo.gl/LHvs8qJadGKrVLPs6" target="_blank" class="map-link">Directions <i class="fas fa-arrow-right"></i></a></div>
+    <div class="location-card"><i class="fas fa-chalkboard"></i><h3>Bole 8-9 Campus</h3><div class="location-address">Bole 8, 9, Addis Ababa<br>Near Bole Medhanialem</div><span class="location-hours"><i class="far fa-clock"></i> Open until 20:00</span><a href="https://maps.app.goo.gl/LHvs8qJadGKrVLPs6" target="_blank" class="map-link">Open in Maps <i class="fas fa-map"></i></a></div>
+    <div class="location-card"><i class="fas fa-school"></i><h3>Adama Branch</h3><div class="location-address">Ras Hotel, 2nd Floor, Adama City</div><span class="location-hours"><i class="fas fa-bus"></i> Easy access from highway</span><a href="https://maps.app.goo.gl/LHvs8qJadGKrVLPs6" target="_blank" class="map-link">Navigate <i class="fas fa-location-dot"></i></a></div>
+    <div class="location-card"><i class="fas fa-globe-africa"></i><h3>Distance Learning Hub</h3><div class="location-address">Online & Remote Support Center<br>Virtual campus accessible nationwide</div><span class="location-hours"><i class="fas fa-laptop"></i> 24/7 digital access</span><a href="#register-now" class="map-link">Enroll remotely →</a></div>
+  </div>
+  <div style="margin-top: 2rem; background: var(--bg-secondary); border-radius: 28px; padding: 1.2rem; text-align: center;">
+    <i class="fas fa-map-marked-alt"></i> All physical campuses offer free consultation, campus tours, and summer registration support.
   </div>
 </section>
 
@@ -671,120 +695,24 @@
 <!-- Footer -->
 <footer>
   <div class="footer-grid">
-    <div>
-      <div class="logo-shield" style="margin-bottom: 1rem;">
-        <img src="logo.JPG" alt="Gage University College Logo" style="height: 45px; width: auto; margin-right: 10px; background: white; border-radius: 8px; padding: 4px;" onerror="this.style.display='none';">
-        <div class="logo-text"><h2 style="color:white;">GAGE University College</h2></div>
-      </div>
-      <p style="max-width: 280px;">ሙሉ እውቅና ያለው — 100% በተግባር የተደገፈ ስልጠና እንሰጣለን::</p>
-      <p style="margin-top: 10px;"><i class="fab fa-youtube"></i> Official: <a href="https://www.youtube.com/@streamsofknowledge" target="_blank" style="color:#f3b33d;">GAGE UC YouTube Channel</a></p>
-    </div>
-    <div>
-      <h4>Quick Contacts</h4>
-      <p><i class="fas fa-phone"></i> +251 906 7777 55</p>
-      <p><i class="fas fa-phone-alt"></i> +251 906 7777 99</p>
-      <p><i class="fas fa-envelope"></i> summer@gage.edu.et</p>
-    </div>
-    <div>
-      <h4>Follow & Explore</h4>
-      <div class="social-links">
-        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-      </div>
-      <div style="margin-top: 1rem;">
-        <a href="https://play.google.com/store/apps/details?id=ethio.app.gageuniversitycollege" target="_blank" style="color:#cddfe7; text-decoration:underline;">📱 Our App on Google Play</a><br>
-        <a href="https://www.scholaro.com/u/Gage-University-College-28811" target="_blank" style="color:#cddfe7; text-decoration:underline;">🎓 Scholaro Profile</a>
-      </div>
-    </div>
+    <div><div class="logo-shield" style="margin-bottom: 1rem;"><img src="logo.JPG" alt="Gage University College Logo" style="height: 45px; width: auto; margin-right: 10px; background: white; border-radius: 8px; padding: 4px;" onerror="this.style.display='none';"><div class="logo-text"><h2 style="color:white;">GAGE University College</h2></div></div><p style="max-width: 280px;">ሙሉ እውቅና ያለው — 100% በተግባር የተደገፈ ስልጠና እንሰጣለን::</p><p style="margin-top: 10px;"><i class="fab fa-youtube"></i> Official: <a href="https://www.youtube.com/@streamsofknowledge" target="_blank" style="color:#f3b33d;">GAGE UC YouTube Channel</a></p></div>
+    <div><h4>Quick Contacts</h4><p><i class="fas fa-phone"></i> +251 906 7777 55</p><p><i class="fas fa-phone-alt"></i> +251 906 7777 99</p><p><i class="fas fa-envelope"></i> summer@gage.edu.et</p></div>
+    <div><h4>Follow & Explore</h4><div class="social-links"><a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a></div><div style="margin-top: 1rem;"><a href="https://play.google.com/store/apps/details?id=ethio.app.gageuniversitycollege" target="_blank" style="color:#cddfe7; text-decoration:underline;">📱 Our App on Google Play</a><br><a href="https://www.scholaro.com/u/Gage-University-College-28811" target="_blank" style="color:#cddfe7; text-decoration:underline;">🎓 Scholaro Profile</a></div></div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 Gage University College – Fully Accredited | 100% Practical-Supported Training | Empowering Future Leaders</p>
-  </div>
+  <div class="footer-bottom"><p>© 2026 Gage University College – Fully Accredited | 100% Practical-Supported Training | 7 Campuses Across Ethiopia</p></div>
 </footer>
 
 <script>
-  // Tab switching logic
   const tabBtns = document.querySelectorAll('.tab-btn');
-  const panes = {
-    tab1: document.getElementById('tab1'),
-    tab2: document.getElementById('tab2'),
-    tab3: document.getElementById('tab3'),
-    tab4: document.getElementById('tab4'),
-    tab5: document.getElementById('tab5')
-  };
-
-  function activateTab(tabId) {
-    for (let key in panes) {
-      if (panes[key]) panes[key].style.display = 'none';
-    }
-    if (panes[tabId]) panes[tabId].style.display = 'block';
-    tabBtns.forEach(btn => {
-      if (btn.getAttribute('data-tab') === tabId) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-  }
-
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const tabId = btn.getAttribute('data-tab');
-      if (tabId) activateTab(tabId);
-    });
-  });
+  const panes = { tab1: document.getElementById('tab1'), tab2: document.getElementById('tab2'), tab3: document.getElementById('tab3'), tab4: document.getElementById('tab4'), tab5: document.getElementById('tab5') };
+  function activateTab(tabId) { for (let key in panes) if (panes[key]) panes[key].style.display = 'none'; if (panes[tabId]) panes[tabId].style.display = 'block'; tabBtns.forEach(btn => { if (btn.getAttribute('data-tab') === tabId) btn.classList.add('active'); else btn.classList.remove('active'); }); }
+  tabBtns.forEach(btn => btn.addEventListener('click', () => activateTab(btn.getAttribute('data-tab'))));
   activateTab('tab1');
-
-  // Dark/Light Mode Toggle
-  const themeToggle = document.getElementById('themeToggle');
-  const themeText = document.getElementById('themeText');
-  const icon = themeToggle.querySelector('i');
-  
-  function setTheme(isDark) {
-    if (isDark) {
-      document.body.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-      themeText.textContent = 'Light';
-      icon.className = 'fas fa-sun';
-    } else {
-      document.body.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      themeText.textContent = 'Dark';
-      icon.className = 'fas fa-moon';
-    }
-  }
-  
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    setTheme(true);
-  } else if (savedTheme === 'light') {
-    setTheme(false);
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    setTheme(true);
-  } else {
-    setTheme(false);
-  }
-  
-  themeToggle.addEventListener('click', () => {
-    const isDark = document.body.classList.contains('dark');
-    setTheme(!isDark);
-  });
-
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === "#" || targetId === "") return;
-      const targetEl = document.querySelector(targetId);
-      if (targetEl) {
-        e.preventDefault();
-        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
+  const themeToggle = document.getElementById('themeToggle'), themeText = document.getElementById('themeText'), icon = themeToggle.querySelector('i');
+  function setTheme(isDark) { if (isDark) { document.body.classList.add('dark'); localStorage.setItem('theme', 'dark'); themeText.textContent = 'Light'; icon.className = 'fas fa-sun'; } else { document.body.classList.remove('dark'); localStorage.setItem('theme', 'light'); themeText.textContent = 'Dark'; icon.className = 'fas fa-moon'; } }
+  const savedTheme = localStorage.getItem('theme'); if (savedTheme === 'dark') setTheme(true); else if (savedTheme === 'light') setTheme(false); else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme(true); else setTheme(false);
+  themeToggle.addEventListener('click', () => setTheme(!document.body.classList.contains('dark')));
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => anchor.addEventListener('click', function(e) { const targetId = this.getAttribute('href'); if (targetId === "#" || targetId === "") return; const targetEl = document.querySelector(targetId); if (targetEl) { e.preventDefault(); targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }));
 </script>
 </body>
 </html>
